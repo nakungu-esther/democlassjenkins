@@ -1,0 +1,29 @@
+name: CICD jenkins jobs step by step
+on: push
+jobs:
+  build-test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run all tests
+        run: echo "build test job"
+        
+  run-test-job:
+    needs: build-test-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run all tests
+        run: echo "run test job"
+        
+  package-job:
+    needs: run-test-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run all tests
+        run: echo "packaging job"
+        
+  sample-job:
+    needs: package-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run all tests
+        run: echo "sampling job"
